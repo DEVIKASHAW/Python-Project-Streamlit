@@ -24,7 +24,7 @@ hide_st_style = """
 st.markdown(hide_st_style, unsafe_allow_html = True)
 
 #df = pd.read_csv("../input/govt-of-india-literacy-rate/GOI.csv") #Loading the dataset.
-df1=pd.read_csv("C:/Users/shawr/Downloads/Devika Python Project/GOI.csv")
+df1=pd.read_csv("GOI.csv")
 #df1
 #df1.columns
 
