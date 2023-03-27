@@ -36,17 +36,6 @@ df1['Rural - Per. Change'] = (df1.loc[:,'Literacy Rate (Persons) - Rural - 2011'
 df1['Urban - Per. Change'] = (df1.loc[:,'Literacy Rate (Persons) - Urban - 2011'] - 
                 df1.loc[:,'Literacy Rate (Persons) - Urban - 2001'])/df1.loc[:,'Literacy Rate (Persons) - Total - 2001']
 
-#Filter of Category
-st.sidebar.header("Please Filter Here:")
-Category= st.sidebar.multiselect(
-    "Select the Category",
-    options=df1["Category"].unique(),
-    default=df1["Category"].unique()
-)    
-
-df1= df1.query( 
-    "Category==@Category"
-)
 
 ## Column names are too long, I don't need that much info in a column name. So, i am altering the names.
 new_col=[]
@@ -296,7 +285,18 @@ select_options = option_menu(
         orientation="horizontal")
 
 if select_options == "Data":
-    
+    #Filter of Category
+    st.sidebar.header("Please Filter Here:")
+    Category= st.sidebar.multiselect(
+        "Select the Category",
+        options=df1["Category"].unique(),
+        default=df1["Category"].unique()
+    )    
+
+    df1= df1.query( 
+        "Category==@Category"
+    )
+
     #Checkbox of show data
     if st.checkbox('Show data'):
         st.write(df1) 
